@@ -7,12 +7,16 @@ import SEO from "../components/seo"
 import userContext from "../context/user/userContext"
 
 const IndexPage = () => {
-  const { login } = useContext(userContext)
+  const { user, login, logout } = useContext(userContext)
 
   return (
     <Layout>
       <SEO title="Home" />
-      <button onClick={login}>login</button>
+      {user ? (
+        <button onClick={logout}>logout</button>
+      ) : (
+        <button onClick={login}>login</button>
+      )}
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
       <p>Now go build something great.</p>
