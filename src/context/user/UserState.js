@@ -1,4 +1,4 @@
-import React, { useReducer } from "react"
+import React, { useEffect, useReducer } from "react"
 import UserContext from "./userContext"
 import userReducer from "./userReducer"
 import { SET_USER } from "../types"
@@ -33,6 +33,12 @@ const UserState = props => {
       payload: null,
     })
   }
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      checkSessionStorage()
+    }
+  }, [])
 
   return (
     <UserContext.Provider
