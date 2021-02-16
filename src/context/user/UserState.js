@@ -17,6 +17,12 @@ const UserState = props => {
     })
   }
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      checkSessionStorage()
+    }
+  }, [])
+
   const login = () => {
     sessionStorage.setItem("user", JSON.stringify(true))
 
@@ -33,12 +39,6 @@ const UserState = props => {
       payload: null,
     })
   }
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      checkSessionStorage()
-    }
-  }, [])
 
   return (
     <UserContext.Provider
